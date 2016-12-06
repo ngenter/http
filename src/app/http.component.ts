@@ -35,4 +35,25 @@ export class HttpAppComponent  {
         }
       );
   }
+  submitForm(author: string, title: string, notes: string,) {
+    this.httpService.sendData({author: author, title: title, notes:notes})
+      .subscribe(
+        data => console.log(data)
+      )
+      
+    console.log('form submitted')
+  }
+  
+  onGetNewData() {
+    console.log('retrieving data')
+    this.httpService.getOwnData()
+      .subscribe
+        data => {
+          const myNewArray = [];
+          for (let key in data) {
+            myNewArray.push(data[key]);
+          }
+          this.items = myNewArray;
+        }
+  }
 }

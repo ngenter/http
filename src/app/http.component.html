@@ -6,7 +6,22 @@
 <hr>
 <button (click)="onGetData()">Get Data</button>
 <ul>
-  <li *ngFor="let item of items">{{item.username}}</li>
+  <li *ngFor="let item of items">{{item.author}}, {{item.title}} - {{item.notes}} </li>
 </ul>
 <hr>
 <p>{{asyncString | async}}</p>
+<hr>
+<div>
+  <form>
+    <label for="author">Author</label>
+    <input type="text" id="author" #author required>
+    <label for="title">Title</label>
+    <input type="text" id="title" #title>
+    <br>
+    <label for="notes">Notes</label>
+    <textarea type="text" id="notes" rows="4" cols="50" #notes>
+    </textarea>
+  </form>
+    <button (click)="submitForm(author.value, title.value, notes.value)">Submit Form</button>
+</div>
+<hr>
